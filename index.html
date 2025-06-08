@@ -3,58 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسماء 🤍 محمد | حب أبدي</title>
+    <title>رسائل حب يومية - أسماء 🤍 محمد</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
         body {
             font-family: 'Cairo', sans-serif;
-            overflow-x: hidden;
             min-height: 100vh;
-            background: #000;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
             color: #fff;
             position: relative;
+            overflow-x: hidden;
+            padding: 20px;
             display: flex;
             flex-direction: column;
+            align-items: center;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 5, 20, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #ffccd5;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            margin-bottom: 0.5rem;
+            display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            gap: 15px;
         }
-
-        /* فيديو الخلفية */
-        #bg-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: 1;
-            object-fit: cover;
-            filter: brightness(0.7);
+        
+        .heart {
+            color: #ff69b4;
+            animation: heartbeat 1.5s infinite;
         }
-
-        /* طبقة تظليل فوق الفيديو */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
+        
+        .date-display {
+            font-size: 1.2rem;
+            color: #d0b0ff;
+            margin-top: 10px;
+        }
+        
+        /* الرسائل اليومية */
+        .messages-container {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(50, 0, 30, 0.5));
-            z-index: 2;
+            max-width: 800px;
+            margin: 20px 0;
         }
-
-        /* النجوم المتلألئة */
+        
+        .message-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.6s ease-out;
+            transition: transform 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .message-date {
+            font-size: 1rem;
+            color: #ffb0d9;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .message-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .message-content::before {
+            content: """;
+            position: absolute;
+            top: -15px;
+            right: 0;
+            font-size: 5rem;
+            color: rgba(255, 105, 180, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .add-message-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 5, 20, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
+        textarea {
+            width: 100%;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Cairo', sans-serif;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #ff69b4;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff69b4, #d056c5);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+        
+        button:active {
+            transform: translateY(1px);
+        }
+        
+        /* عناصر التزيين */
+        .moon {
+            position: fixed;
+            top: 5%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle at 30% 30%, #f9f3e9, #d8d0c5);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(249, 243, 233, 0.7);
+            z-index: -1;
+            animation: driftMoon 90s ease-in-out infinite;
+        }
+        
         .stars {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 3;
+            z-index: -2;
             pointer-events: none;
         }
+        
         .star {
             position: absolute;
             background-color: #fff;
@@ -62,95 +202,36 @@
             animation: twinkle var(--duration) ease-in-out infinite;
             animation-delay: var(--delay);
         }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.5); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        /* القمر */
-        .moon {
+        
+        .petals-container {
             position: fixed;
-            top: 15%;
-            right: 20%;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle at 30% 30%, #f9f3e9, #d8d0c5);
-            border-radius: 50%;
-            box-shadow: 0 0 60px rgba(249, 243, 233, 0.9);
-            z-index: 4;
-            animation: driftMoon 90s ease-in-out infinite;
-        }
-        .moon::after {
-            content: '';
-            position: absolute;
-            top: 20%;
-            right: 20%;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(200, 190, 180, 0.3);
-        }
-        @keyframes driftMoon {
-            0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(10px, 15px); }
-            50% { transform: translate(0, 30px); }
-            75% { transform: translate(-10px, 15px); }
-        }
-
-        /* الجبال */
-        .mountains {
-            position: fixed;
-            bottom: 0;
+            top: 0;
             left: 0;
             width: 100%;
-            height: 30%;
-            background: linear-gradient(to top, #1a1a2e, #16213e);
-            clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 90% 40%, 80% 20%, 70% 40%, 60% 10%, 50% 30%, 40% 0%, 30% 30%, 20% 10%, 10% 30%, 0% 20%);
-            z-index: 5;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
         }
-
-        /* المحتوى الرئيسي */
-        .container {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            padding: 30px;
-            max-width: 800px;
-            width: 90%;
-            background: rgba(10, 5, 20, 0.5);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
-            border: 1px solid rgba(255, 182, 193, 0.2);
-            animation: fadeIn 2s ease-out;
-            margin: 20px 0;
+        
+        .petal {
+            position: absolute;
+            background-size: cover;
+            opacity: 0.8;
+            animation: fall linear forwards;
         }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            color: #ffccd5;
-            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
-            margin-bottom: 0.5rem;
-            display: inline-block;
-            animation: pulse 3s infinite;
-        }
-        .heart {
-            margin: 0 15px;
-            color: #ff69b4;
-            font-size: 1.2em;
-            animation: heartbeat 1.5s infinite;
-            display: inline-block;
-        }
-
+        
+        /* الرسوم المتحركة */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
         }
+        
         @keyframes heartbeat {
             0% { transform: scale(1); }
             14% { transform: scale(1.3); }
@@ -158,240 +239,87 @@
             42% { transform: scale(1.3); }
             70% { transform: scale(1); }
         }
-
-        .message {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
+        
+        @keyframes driftMoon {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(10px, 15px); }
+            50% { transform: translate(0, 30px); }
+            75% { transform: translate(-10px, 15px); }
         }
-        .message::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            right: 10px;
-            font-size: 6rem;
-            color: rgba(255, 105, 180, 0.2);
-            font-family: 'Playfair Display', serif;
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
         }
-
-        .signature {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.3rem;
-            color: #ff77aa;
-            margin-top: 15px;
-            display: inline-block;
-            text-shadow: 0 0 10px rgba(255, 119, 170, 0.7);
-            animation: float 4s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        /* بتلات الزهور */
-        .petals-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 6;
-            pointer-events: none;
-            overflow: hidden;
-        }
-        .petal {
-            position: absolute;
-            background-size: cover;
-            opacity: 0.8;
-            animation: fall linear forwards;
-        }
+        
         @keyframes fall {
             to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
-
-        /* عناصر التحكم */
-        .controls {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            display: flex;
-            gap: 15px;
-        }
-        .control-btn {
-            background: rgba(255, 182, 193, 0.3);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-        .control-btn:hover {
-            background: rgba(255, 105, 180, 0.6);
-            transform: scale(1.1);
-        }
-        .control-btn i {
-            color: white;
-            font-size: 20px;
-        }
-
-        /* شهادة الحب */
-        .certificate {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            width: 90%;
-            max-width: 500px;
-            background: linear-gradient(135deg, #f9f0ff, #e6f7ff);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-            z-index: 30;
+        
+        footer {
+            margin-top: 30px;
             text-align: center;
-            color: #5a2d82;
-            font-family: 'Dancing Script', cursive;
-            transition: transform 0.5s ease;
-        }
-        .certificate.active {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        .certificate h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: #ff69b4;
-        }
-        .certificate p {
-            font-size: 1.5rem;
-            line-height: 1.6;
-            margin: 15px 0;
-        }
-        .certificate .names {
-            font-size: 2.2rem;
-            color: #ff69b4;
-            margin: 20px 0;
-        }
-        .certificate .date {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            color: #5a2d82;
+            padding: 20px;
+            color: #a0a0d0;
+            font-size: 1rem;
         }
         
-        /* رسالة الترحيب */
-        .welcome-message {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            margin-top: 20px;
-            background: rgba(10, 5, 20, 0.5);
-            backdrop-filter: blur(5px);
-            padding: 15px;
-            border-radius: 10px;
-            max-width: 800px;
-            width: 90%;
-        }
-        .welcome-message p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .message { font-size: 1.1rem; padding: 15px; }
-            .signature { font-size: 1.8rem; }
-            .moon { width: 80px; height: 80px; top: 10%; right: 15%; }
-            .mountains { height: 25%; }
-            .certificate { padding: 20px; }
-            .certificate p { font-size: 1.3rem; }
-            .certificate .names { font-size: 1.8rem; }
+            h1 { font-size: 2.2rem; }
+            .message-content { font-size: 1.1rem; }
+            textarea { height: 120px; font-size: 1rem; }
+            button { padding: 12px 25px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-    <!-- فيديو خلفية رومانسي -->
-    <video id="bg-video" autoplay muted loop playsinline>
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-night-sky-with-stars-rotating-1566-large.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
-    
-    <!-- النجوم -->
-    <div class="stars" id="stars"></div>
-    
-    <!-- القمر -->
+    <!-- عناصر التزيين -->
     <div class="moon"></div>
-    
-    <!-- الجبال -->
-    <div class="mountains"></div>
-    
-    <!-- بتلات الزهور -->
+    <div class="stars" id="stars"></div>
     <div class="petals-container" id="petals"></div>
     
-    <!-- المحتوى الرئيسي -->
-    <div class="container">
+    <!-- رأس الموقع -->
+    <div class="header">
         <h1>أسماء <span class="heart">❤️</span> محمد</h1>
-        
-        <div class="message">
-            "يا أسماء، أنتِ النور الذي يضيء حياتي، والحديقة التي تزين أيامي. 
-            في عينيكِ وجدت وطني، وفي قلبكِ وجدت سلامي. 
-            حبنا كالنجوم الساطعة، لا تُحصى ولا تنتهي. 
-            معكِ أريد أن أكتب فصول عمرنا القادمة، وأرسم ذكرياتنا الجميلة. 
-            إلى الأبد، سأكون بجانبكِ، أحبكِ أكثر من كل الكلمات."
-        </div>
-        
-        <div class="signature">محمد - إلى الأبد</div>
+        <div class="date-display" id="currentDate">الأحد ٨ يونيو ٢٠٢٥</div>
     </div>
     
-    <!-- شهادة الحب -->
-    <div class="certificate" id="certificate">
-        <h2>شهادة حب أبدي</h2>
-        <p>نعلن للكون بأن</p>
-        <div class="names">أسماء ❤️ محمد</div>
-        <p>قد اتحد قلبيهما في رباط الحب الأبدي</p>
-        <p>وقد تعهدا بأن يكونا شريكين في رحلة الحياة</p>
-        <p>يشاركان الفرح والحزن، ويبنيان معاً مستقبلاً مشرقاً</p>
-        <p>هذه الشهادة خالدة مثل حبهما</p>
-        <div class="date">8 يونيو 2025</div>
+    <!-- رسائل الحب -->
+    <div class="messages-container" id="messagesContainer">
+        <!-- سيتم إضافة الرسائل هنا ديناميكيًا -->
     </div>
     
-    <!-- رسالة ترحيب -->
-    <div class="welcome-message">
-        <p>مرحباً بك في عالم حب أسماء ومحمد، حيث كل تفصيل يحكي قصة حب خالدة. يمكنك التفاعل مع الموقع باستخدام الأزرار أدناه.</p>
+    <!-- نموذج إضافة رسالة جديدة -->
+    <div class="add-message-container">
+        <h2 style="margin-bottom: 20px; color: #ffccd5; text-align: center;">أضف رسالة حب جديدة</h2>
+        <textarea id="newMessage" placeholder="اكتب رسالة حبك اليومية هنا..."></textarea>
+        <button id="addMessageBtn">
+            <i class="fas fa-plus"></i> أضف رسالة جديدة
+        </button>
     </div>
     
-    <!-- عناصر التحكم -->
-    <div class="controls">
-        <button class="control-btn" id="musicBtn">
-            <i class="fas fa-music"></i>
-        </button>
-        <button class="control-btn" id="certificateBtn">
-            <i class="fas fa-certificate"></i>
-        </button>
-        <button class="control-btn" id="heartBtn">
-            <i class="fas fa-heart"></i>
-        </button>
-    </div>
-
-    <audio id="backgroundMusic" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-piano-melody-1715.mp3" type="audio/mp3">
-    </audio>
+    <footer>
+        تم إنشاء هذا الموقع بكل الحب ❤️ - تحديث يومي لرسائل الحب
+    </footer>
 
     <script>
+        // عناصر DOM
+        const messagesContainer = document.getElementById('messagesContainer');
+        const newMessageInput = document.getElementById('newMessage');
+        const addMessageBtn = document.getElementById('addMessageBtn');
+        const currentDateEl = document.getElementById('currentDate');
+        
+        // تحديث التاريخ الحالي
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            currentDateEl.textContent = now.toLocaleDateString('ar-EG', options);
+        }
+        
         // إنشاء النجوم
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 200;
+            const starCount = 150;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -405,11 +333,11 @@
                 starsContainer.appendChild(star);
             }
         }
-
+        
         // إنشاء بتلات الزهور
         function createPetals() {
             const petalsContainer = document.getElementById('petals');
-            const petalCount = 80;
+            const petalCount = 60;
             const petalTypes = [
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ff6699" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z"/></svg>',
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ffcc00" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z" transform="rotate(45 5 5)"/></svg>',
@@ -423,85 +351,114 @@
                 petal.style.backgroundImage = `url('${randomPetal}')`;
                 petal.style.left = `${Math.random() * 100}vw`;
                 petal.style.animationDuration = `${5 + Math.random() * 15}s`;
-                petal.style.setProperty('--x', `${(Math.random() - 0.5) * 100}vw`);
                 petal.style.width = `${10 + Math.random() * 20}px`;
                 petal.style.height = petal.style.width;
                 petalsContainer.appendChild(petal);
             }
         }
-
-        // عناصر التحكم
-        const musicBtn = document.getElementById('musicBtn');
-        const certificateBtn = document.getElementById('certificateBtn');
-        const heartBtn = document.getElementById('heartBtn');
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        const certificate = document.getElementById('certificate');
         
-        let musicPlaying = false;
+        // تنسيق التاريخ
+        function formatDate(date) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('ar-EG', options);
+        }
         
-        musicBtn.addEventListener('click', () => {
-            if (musicPlaying) {
-                backgroundMusic.pause();
-                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
-            } else {
-                backgroundMusic.play().catch(e => {
-                    console.log("لم يتمكن المتصفح من تشغيل الموسيقى تلقائياً: ", e);
-                });
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }
-            musicPlaying = !musicPlaying;
-        });
-        
-        certificateBtn.addEventListener('click', () => {
-            certificate.classList.toggle('active');
-        });
-        
-        heartBtn.addEventListener('click', () => {
-            // إنشاء قلوب متحركة
-            for (let i = 0; i < 15; i++) {
-                const heart = document.createElement('div');
-                heart.innerHTML = '❤️';
-                heart.style.position = 'fixed';
-                heart.style.left = `${Math.random() * 100}vw`;
-                heart.style.top = '100vh';
-                heart.style.fontSize = `${15 + Math.random() * 25}px`;
-                heart.style.opacity = '0.8';
-                heart.style.zIndex = '15';
-                heart.style.animation = `floatHeart ${3 + Math.random() * 4}s ease-in forwards`;
-                
-                document.body.appendChild(heart);
-                
-                // إزالة القلب بعد انتهاء الحركة
-                setTimeout(() => {
-                    heart.remove();
-                }, 7000);
+        // عرض الرسائل
+        function displayMessages() {
+            // مسح المحتوى الحالي
+            messagesContainer.innerHTML = '';
+            
+            // الحصول على الرسائل من localStorage
+            const messages = JSON.parse(localStorage.getItem('loveMessages')) || [];
+            
+            // عرض الرسائل بترتيب زمني عكسي (الأحدث أولاً)
+            messages.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            if (messages.length === 0) {
+                messagesContainer.innerHTML = `
+                    <div class="message-card">
+                        <div class="message-date">
+                            <i class="fas fa-calendar"></i> اليوم
+                        </div>
+                        <div class="message-content">
+                            لا توجد رسائل بعد. ابدأ بإضافة أول رسالة حب!
+                        </div>
+                    </div>
+                `;
+                return;
             }
             
-            // تعريف حركة القلوب
-            const style = document.createElement('style');
-            style.innerHTML = `
-                @keyframes floatHeart {
-                    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
-                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-                }
-            `;
-            document.head.appendChild(style);
-        });
-
+            // عرض كل الرسائل
+            messages.forEach(msg => {
+                const messageCard = document.createElement('div');
+                messageCard.className = 'message-card';
+                messageCard.innerHTML = `
+                    <div class="message-date">
+                        <i class="fas fa-calendar"></i> ${formatDate(new Date(msg.date))}
+                    </div>
+                    <div class="message-content">
+                        ${msg.content}
+                    </div>
+                `;
+                messagesContainer.appendChild(messageCard);
+            });
+        }
+        
+        // إضافة رسالة جديدة
+        function addNewMessage() {
+            const content = newMessageInput.value.trim();
+            
+            if (!content) {
+                alert('الرجاء إدخال رسالة حب!');
+                return;
+            }
+            
+            // إنشاء كائن الرسالة
+            const newMessage = {
+                date: new Date().toISOString(),
+                content: content
+            };
+            
+            // الحصول على الرسائل الحالية من localStorage
+            const messages = JSON.parse(localStorage.getItem('loveMessages')) || [];
+            
+            // إضافة الرسالة الجديدة
+            messages.push(newMessage);
+            
+            // حفظ في localStorage
+            localStorage.setItem('loveMessages', JSON.stringify(messages));
+            
+            // تحديث العرض
+            displayMessages();
+            
+            // مسح حقل الإدخال
+            newMessageInput.value = '';
+            
+            // إظهار رسالة نجاح
+            alert('تم إضافة رسالة الحب بنجاح!');
+        }
+        
         // تهيئة الموقع
-        window.addEventListener('load', () => {
+        function init() {
+            updateCurrentDate();
             createStars();
             createPetals();
+            displayMessages();
             
-            // محاولة تشغيل الموسيقى تلقائياً (قد لا يعمل في بعض المتصفحات)
-            setTimeout(() => {
-                backgroundMusic.play().catch(e => {
-                    console.log("لم يتمكن المتصفح من تشغيل الموسيقى تلقائياً: ", e);
-                });
-                musicPlaying = true;
-                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            }, 2000);
-        });
+            // إضافة مستمعي الأحداث
+            addMessageBtn.addEventListener('click', addNewMessage);
+            
+            // السماح بإرسال الرسالة بالضغط على Enter
+            newMessageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    addNewMessage();
+                }
+            });
+        }
+        
+        // بدء التحميل
+        window.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
