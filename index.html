@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أسماء 🤍 محمد | إلى الأبد</title>
+    <title>أسماء 🤍 محمد | حب أبدي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Dancing+Script:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -14,6 +15,9 @@
             background: #000;
             color: #fff;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* فيديو الخلفية */
@@ -24,7 +28,8 @@
             min-width: 100%;
             min-height: 100%;
             z-index: 1;
-            filter: blur(3px) brightness(0.7);
+            object-fit: cover;
+            filter: brightness(0.7);
         }
 
         /* طبقة تظليل فوق الفيديو */
@@ -34,7 +39,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(50, 0, 30, 0.5));
             z-index: 2;
         }
 
@@ -63,16 +68,31 @@
         /* القمر */
         .moon {
             position: absolute;
-            top: 20%;
-            left: 50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle at 30% 30%, #f0e9da, #c9c2b5);
+            top: 15%;
+            left: 20%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, #f9f3e9, #d8d0c5);
             border-radius: 50%;
-            box-shadow: 0 0 50px rgba(240, 233, 218, 0.8);
-            transform: translate(-50%, -50%);
+            box-shadow: 0 0 60px rgba(249, 243, 233, 0.9);
             z-index: 4;
-            transition: transform 0.1s ease;
+            animation: driftMoon 90s ease-in-out infinite;
+        }
+        .moon::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(200, 190, 180, 0.3);
+        }
+        @keyframes driftMoon {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(20px, 15px); }
+            50% { transform: translate(0, 30px); }
+            75% { transform: translate(-20px, 15px); }
         }
 
         /* الجبال */
@@ -81,9 +101,9 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 50%;
-            background: url('https://assets.example.com/mountains.png') bottom center no-repeat;
-            background-size: cover;
+            height: 40%;
+            background: linear-gradient(to top, #1a1a2e, #16213e);
+            clip-path: polygon(0% 100%, 100% 100%, 100% 30%, 90% 40%, 80% 20%, 70% 40%, 60% 10%, 50% 30%, 40% 0%, 30% 30%, 20% 10%, 10% 30%, 0% 20%);
             z-index: 5;
         }
 
@@ -92,64 +112,82 @@
             position: relative;
             z-index: 10;
             text-align: center;
-            padding: 50px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            padding: 30px;
+            max-width: 800px;
+            width: 90%;
+            background: rgba(10, 5, 20, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            animation: fadeIn 2s ease-out;
         }
 
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4em;
+            font-size: 4.5rem;
             color: #ffccd5;
-            text-shadow: 0 0 20px rgba(255, 204, 213, 0.7);
-            margin-bottom: 0.2em;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            margin-bottom: 0.5rem;
             display: inline-block;
-            opacity: 0;
-            animation: fadeIn 2s ease-in forwards;
+            animation: pulse 3s infinite;
         }
-        .heart-white {
-            margin: 0 10px;
-            color: #ffffff;
-            font-size: 1.2em;
-            animation: pulse 2s infinite;
+        .heart {
+            margin: 0 15px;
+            color: #ff69b4;
+            font-size: 1.5em;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            50% { transform: scale(1.05); }
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
         }
 
         .message {
-            font-size: 1.5em;
-            max-width: 600px;
-            margin: 20px auto;
+            font-size: 1.5rem;
             line-height: 1.8;
-            font-style: italic;
-            opacity: 0;
-            animation: fadeIn 3s ease-in 1s forwards;
-            color: #e6f7ff;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+            margin: 30px 0;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .message::before {
+            content: '"';
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 6rem;
+            color: rgba(255, 105, 180, 0.2);
+            font-family: 'Playfair Display', serif;
         }
 
         .signature {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
+            font-size: 2.8rem;
             color: #ff77aa;
-            margin-top: 30px;
+            margin-top: 20px;
             display: inline-block;
-            opacity: 0;
-            animation: fadeIn 4s ease-in 2s forwards, pulseText 3s infinite 3s;
+            text-shadow: 0 0 10px rgba(255, 119, 170, 0.7);
+            animation: float 4s ease-in-out infinite;
         }
-        @keyframes pulseText {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         /* بتلات الزهور */
@@ -165,8 +203,6 @@
         }
         .petal {
             position: absolute;
-            width: 20px;
-            height: 20px;
             background-size: cover;
             opacity: 0.8;
             animation: fall linear forwards;
@@ -175,13 +211,18 @@
             to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* زر الموسيقى */
-        .music-btn {
+        /* عناصر التحكم */
+        .controls {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 20;
-            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            gap: 20px;
+        }
+        .control-btn {
+            background: rgba(255, 182, 193, 0.3);
             border: none;
             width: 50px;
             height: 50px;
@@ -192,49 +233,135 @@
             justify-content: center;
             backdrop-filter: blur(5px);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
-        .music-btn i {
+        .control-btn:hover {
+            background: rgba(255, 105, 180, 0.6);
+            transform: scale(1.1);
+        }
+        .control-btn i {
             color: white;
             font-size: 24px;
+        }
+
+        /* شهادة الحب */
+        .certificate {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 80%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #f9f0ff, #e6f7ff);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            z-index: 30;
+            text-align: center;
+            color: #5a2d82;
+            font-family: 'Dancing Script', cursive;
+            transition: transform 0.5s ease;
+        }
+        .certificate.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .certificate h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #ff69b4;
+        }
+        .certificate p {
+            font-size: 1.8rem;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        .certificate .names {
+            font-size: 3rem;
+            color: #ff69b4;
+            margin: 30px 0;
+        }
+        .certificate .date {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #5a2d82;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .message { font-size: 1.2rem; }
+            .signature { font-size: 2rem; }
+            .moon { width: 100px; height: 100px; }
         }
     </style>
 </head>
 <body>
     <!-- فيديو خلفية رومانسي -->
     <video id="bg-video" autoplay muted loop>
-        <source src="https://assets.example.com/romantic_night_sky.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-night-sky-with-stars-rotating-1566-large.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
-
+    
     <!-- النجوم -->
     <div class="stars" id="stars"></div>
-
+    
     <!-- القمر -->
-    <div class="moon" id="moon"></div>
-
+    <div class="moon"></div>
+    
     <!-- الجبال -->
     <div class="mountains"></div>
-
+    
     <!-- بتلات الزهور -->
     <div class="petals-container" id="petals"></div>
-
+    
     <!-- المحتوى -->
     <div class="container">
-        <h1>أسماء <span class="heart-white">🤍</span> محمد</h1>
-        <p class="message" id="message">"أنتِ يا أسماءِ نبضُ القلبِ العظيم الذي يمنحُ روحي الحياة، وحبُّنا شعلةٌ لا تنطفئ، تُضيءُ دروبَ العمرِ بكلِّ عناقٍ وأملٍ أبديٍّ."</p>
-        <div class="signature">محمد لكِ إلى الأبد</div>
+        <h1>أسماء <span class="heart">❤️</span> محمد</h1>
+        
+        <div class="message">
+            "يا أسماء، أنتِ النور الذي يضيء حياتي، والحديقة التي تزين أيامي. 
+            في عينيكِ وجدت وطني، وفي قلبكِ وجدت سلامي. 
+            حبنا كالنجوم الساطعة، لا تُحصى ولا تنتهي. 
+            معكِ أريد أن أكتب فصول عمرنا القادمة، وأرسم ذكرياتنا الجميلة. 
+            إلى الأبد، سأكون بجانبكِ، أحبكِ أكثر من كل الكلمات."
+        </div>
+        
+        <div class="signature">محمد - إلى الأبد</div>
+    </div>
+    
+    <!-- شهادة الحب -->
+    <div class="certificate" id="certificate">
+        <h2>شهادة حب أبدي</h2>
+        <p>نعلن للكون بأن</p>
+        <div class="names">أسماء ❤️ محمد</div>
+        <p>قد اتحد قلبيهما في رباط الحب الأبدي</p>
+        <p>وقد تعهدا بأن يكونا شريكين في رحلة الحياة</p>
+        <p>يشاركان الفرح والحزن، ويبنيان معاً مستقبلاً مشرقاً</p>
+        <p>هذه الشهادة خالدة مثل حبهما</p>
+        <div class="date">8 يونيو 2025</div>
+    </div>
+    
+    <!-- عناصر التحكم -->
+    <div class="controls">
+        <button class="control-btn" id="musicBtn">
+            <i class="fas fa-music"></i>
+        </button>
+        <button class="control-btn" id="certificateBtn">
+            <i class="fas fa-certificate"></i>
+        </button>
+        <button class="control-btn" id="heartBtn">
+            <i class="fas fa-heart"></i>
+        </button>
     </div>
 
-    <!-- زر الموسيقى -->
-    <button class="music-btn" id="musicBtn">
-        <i>🎵</i>
-    </button>
+    <audio id="backgroundMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-piano-melody-1715.mp3" type="audio/mp3">
+    </audio>
 
     <script>
         // إنشاء النجوم
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 200;
+            const starCount = 300;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
@@ -252,7 +379,7 @@
         // إنشاء بتلات الزهور
         function createPetals() {
             const petalsContainer = document.getElementById('petals');
-            const petalCount = 60;
+            const petalCount = 100;
             const petalTypes = [
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ff6699" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z"/></svg>',
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ffcc00" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z" transform="rotate(45 5 5)"/></svg>',
@@ -265,7 +392,7 @@
                 const randomPetal = petalTypes[Math.floor(Math.random() * petalTypes.length)];
                 petal.style.backgroundImage = `url('${randomPetal}')`;
                 petal.style.left = `${Math.random() * 100}vw`;
-                petal.style.animationDuration = `${5 + Math.random() * 10}s`;
+                petal.style.animationDuration = `${5 + Math.random() * 15}s`;
                 petal.style.setProperty('--x', `${(Math.random() - 0.5) * 100}vw`);
                 petal.style.width = `${10 + Math.random() * 20}px`;
                 petal.style.height = petal.style.width;
@@ -273,51 +400,73 @@
             }
         }
 
-        // تفاعل القمر مع الماوس
-        document.addEventListener('mousemove', (e) => {
-            const moon = document.getElementById('moon');
-            const x = (e.clientX / window.innerWidth - 0.5) * 20; // -10px to 10px
-            const y = (e.clientY / window.innerHeight - 0.5) * 20;
-            moon.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)`;
-        });
-
-        // تأثير كتابة الرسالة
-        function typeMessage() {
-            const messageElement = document.getElementById('message');
-            const text = messageElement.textContent;
-            messageElement.textContent = '';
-            
-            let i = 0;
-            const typing = setInterval(() => {
-                if (i < text.length) {
-                    messageElement.textContent += text.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typing);
-                }
-            }, 50);
-        }
-
-        // زر الموسيقى
+        // عناصر التحكم
         const musicBtn = document.getElementById('musicBtn');
-        const audio = new Audio('https://assets.example.com/romantic_music.mp3');
-        audio.loop = true;
+        const certificateBtn = document.getElementById('certificateBtn');
+        const heartBtn = document.getElementById('heartBtn');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const certificate = document.getElementById('certificate');
+        
+        let musicPlaying = false;
         
         musicBtn.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = '<i>🔊</i>';
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicBtn.innerHTML = '<i class="fas fa-music"></i>';
             } else {
-                audio.pause();
-                musicBtn.innerHTML = '<i>🔇</i>';
+                backgroundMusic.play();
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
             }
+            musicPlaying = !musicPlaying;
+        });
+        
+        certificateBtn.addEventListener('click', () => {
+            certificate.classList.toggle('active');
+        });
+        
+        heartBtn.addEventListener('click', () => {
+            // إنشاء قلوب متحركة
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = '100vh';
+                heart.style.fontSize = `${20 + Math.random() * 30}px`;
+                heart.style.opacity = '0.8';
+                heart.style.zIndex = '15';
+                heart.style.animation = `floatHeart ${3 + Math.random() * 4}s ease-in forwards`;
+                
+                document.body.appendChild(heart);
+                
+                // إزالة القلب بعد انتهاء الحركة
+                setTimeout(() => {
+                    heart.remove();
+                }, 7000);
+            }
+            
+            // تعريف حركة القلوب
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes floatHeart {
+                    0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+                    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
         });
 
         // تهيئة الموقع
         window.addEventListener('load', () => {
             createStars();
             createPetals();
-            setTimeout(typeMessage, 1000); // بدء الكتابة بعد ثانية
+            
+            // بدء تشغيل الموسيقى تلقائياً
+            setTimeout(() => {
+                backgroundMusic.play();
+                musicPlaying = true;
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            }, 2000);
         });
     </script>
 </body>
