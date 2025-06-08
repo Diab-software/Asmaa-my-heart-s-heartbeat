@@ -418,6 +418,37 @@
             textarea { height: 120px; font-size: 1rem; }
             button { padding: 12px 25px; font-size: 1rem; }
         }
+        
+        .quote-section {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .quote-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #ffccd5;
+            margin-bottom: 20px;
+        }
+        
+        .quote-content {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            font-style: italic;
+            color: #d0b0ff;
+            margin-bottom: 20px;
+        }
+        
+        .quote-author {
+            font-size: 1.2rem;
+            color: #ffb0d9;
+            font-family: 'Playfair Display', serif;
+        }
     </style>
 </head>
 <body>
@@ -435,6 +466,13 @@
             محمد
         </h1>
         <div class="date-display" id="currentDate">الأحد ٨ يونيو ٢٠٢٥</div>
+    </div>
+    
+    <!-- قسم الاقتباس الرومانسي -->
+    <div class="quote-section">
+        <h2 class="quote-title">اقتباس اليوم</h2>
+        <p class="quote-content" id="dailyQuote">الحب هو أن ترى كل شيء في شخص واحد، وبدون هذا الشخص لا ترى أي شيء</p>
+        <p class="quote-author">- أسماء لمحمد</p>
     </div>
     
     <!-- رسائل الحب -->
@@ -461,12 +499,35 @@
         const newMessageInput = document.getElementById('newMessage');
         const addMessageBtn = document.getElementById('addMessageBtn');
         const currentDateEl = document.getElementById('currentDate');
+        const dailyQuoteEl = document.getElementById('dailyQuote');
+        
+        // مجموعة من الاقتباسات الرومانسية
+        const romanticQuotes = [
+            "حبك هو النور الذي يضيء حياتي كل يوم",
+            "معك فقط أشعر بأنني في بيتي الحقيقي",
+            "أنتِ كل شيء جميل في حياتي، وأكثر",
+            "قلبي ينتمي إليكِ منذ اللحظة التي رأيتكِ فيها",
+            "حبي لك أكبر من أن يعبر عنه بكلمات",
+            "كل يوم معك هو فصل جديد من قصة حبنا الجميلة",
+            "وجودك في حياتي هو أجمل هدئة من القدر",
+            "عندما أرى ابتسامتك، يختفي كل تعب العالم",
+            "أنتِ الحب الذي كنت أحلم به طوال حياتي",
+            "حتى النجوم تغار من بريق عينيكِ",
+            "كل لحظة بعيداً عنك هي لحظة ضائعة من حياتي",
+            "حبنا هو القصة الأجمل التي سأرويها للأجيال القادمة"
+        ];
         
         // تحديث التاريخ الحالي
         function updateCurrentDate() {
             const now = new Date();
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             currentDateEl.textContent = now.toLocaleDateString('ar-EG', options);
+        }
+        
+        // تحديث الاقتباس اليومي
+        function updateDailyQuote() {
+            const randomIndex = Math.floor(Math.random() * romanticQuotes.length);
+            dailyQuoteEl.textContent = romanticQuotes[randomIndex];
         }
         
         // إنشاء النجوم
@@ -593,6 +654,7 @@
                         messages.splice(index, 1);
                         localStorage.setItem('loveMessages', JSON.stringify(messages));
                         displayMessages();
+                        createBubble('تم حذف الرسالة بنجاح!', 'success');
                     }
                 });
                 
@@ -608,6 +670,7 @@
                         messages[index].content = newContent;
                         localStorage.setItem('loveMessages', JSON.stringify(messages));
                         displayMessages();
+                        createBubble('تم تعديل الرسالة بنجاح!', 'success');
                     } else {
                         alert('الرجاء إدخال محتوى للرسالة!');
                     }
@@ -682,6 +745,7 @@
         // تهيئة الموقع
         function init() {
             updateCurrentDate();
+            updateDailyQuote();
             createStars();
             createPetals();
             displayMessages();
@@ -705,7 +769,20 @@
                     return;
                 }
                 
-                createBubble('بحبك يا غلاتي ❤️');
+                // اقتباسات عشوائية للفقاعات
+                const bubbleMessages = [
+                    "بحبك يا غلاتي ❤️",
+                    "أنتِ حب حياتي",
+                    "عيونكِ نجمة هدايتي",
+                    "قلبي ملككِ للأبد",
+                    "أنتِ أجمل ما في حياتي",
+                    "حبي لكِ لا ينتهي",
+                    "كل يوم أحبكِ أكثر",
+                    "أنتِ كل أحلامي"
+                ];
+                
+                const randomMessage = bubbleMessages[Math.floor(Math.random() * bubbleMessages.length)];
+                createBubble(randomMessage);
             });
         }
         
