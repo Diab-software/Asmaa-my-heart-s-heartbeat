@@ -39,6 +39,19 @@
             box-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
             border: 1px solid rgba(255, 182, 193, 0.2);
             animation: fadeIn 1.5s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.1), transparent 70%);
+            z-index: -1;
         }
         
         h1 {
@@ -96,6 +109,18 @@
             font-size: 1.2rem;
             color: #d0b0ff;
             margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .special-date {
+            background: linear-gradient(45deg, #ff69b4, #d056c5);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
         }
         
         /* الرسائل اليومية */
@@ -115,11 +140,28 @@
             overflow: hidden;
             animation: slideIn 0.6s ease-out;
             transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
+        .message-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff69b4, #d056c5);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
         }
         
         .message-card:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .message-card:hover::before {
+            transform: translateY(0);
         }
         
         .message-header {
@@ -239,6 +281,19 @@
             margin-top: 20px;
             box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
             border: 1px solid rgba(255, 182, 193, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .add-message-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.1), transparent 70%);
+            z-index: -1;
         }
         
         textarea {
@@ -253,12 +308,14 @@
             font-family: 'Cairo', sans-serif;
             resize: vertical;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
         
         textarea:focus {
             outline: none;
             border-color: #ff69b4;
             background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
         }
         
         button {
@@ -275,11 +332,28 @@
             align-items: center;
             gap: 10px;
             box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+        }
+        
+        button:hover::before {
+            left: 100%;
         }
         
         button:active {
@@ -348,6 +422,21 @@
             font-family: 'Dancing Script', cursive;
         }
         
+        .love-count {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
         /* الرسوم المتحركة */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -404,12 +493,22 @@
             }
         }
         
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
         footer {
             margin-top: 30px;
             text-align: center;
             padding: 20px;
             color: #a0a0d0;
             font-size: 1rem;
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 5, 20, 0.3);
+            border-radius: 15px;
         }
         
         @media (max-width: 768px) {
@@ -417,6 +516,7 @@
             .message-content { font-size: 1.1rem; }
             textarea { height: 120px; font-size: 1rem; }
             button { padding: 12px 25px; font-size: 1rem; }
+            .love-count { top: 10px; left: 10px; font-size: 0.9rem; }
         }
         
         .quote-section {
@@ -427,6 +527,20 @@
             padding: 25px;
             margin: 20px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
+        .quote-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.1), transparent 70%);
+            z-index: -1;
         }
         
         .quote-title {
@@ -434,6 +548,7 @@
             font-size: 2.2rem;
             color: #ffccd5;
             margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
         }
         
         .quote-content {
@@ -442,12 +557,75 @@
             font-style: italic;
             color: #d0b0ff;
             margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .quote-content::before, .quote-content::after {
+            content: """;
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: rgba(255, 105, 180, 0.3);
+            position: absolute;
+            line-height: 1;
+        }
+        
+        .quote-content::before {
+            top: -20px;
+            right: 0;
+        }
+        
+        .quote-content::after {
+            bottom: -40px;
+            left: 0;
+            transform: rotate(180deg);
         }
         
         .quote-author {
             font-size: 1.2rem;
             color: #ffb0d9;
             font-family: 'Playfair Display', serif;
+        }
+        
+        .memory-section {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+        
+        .memory-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #ffccd5;
+            margin-bottom: 20px;
+        }
+        
+        .memory-date {
+            font-size: 1.5rem;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .memory-content {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #d0b0ff;
+            margin-bottom: 20px;
+        }
+        
+        .heart-icon {
+            color: #ff69b4;
+            font-size: 1.5rem;
+            margin: 0 5px;
+            animation: heartbeat 1.5s infinite;
         }
     </style>
 </head>
@@ -457,6 +635,12 @@
     <div class="stars" id="stars"></div>
     <div class="petals-container" id="petals"></div>
     
+    <!-- عداد الحب -->
+    <div class="love-count">
+        <i class="fas fa-heart" style="color: #ff69b4;"></i>
+        <span id="loveCounter">0</span> رسالة حب
+    </div>
+    
     <!-- رأس الموقع -->
     <div class="header">
         <h1>أسماء 
@@ -465,7 +649,23 @@
             </div>
             محمد
         </h1>
-        <div class="date-display" id="currentDate">الأحد ٨ يونيو ٢٠٢٥</div>
+        <div class="date-display">
+            <span>٦ يونيو ٢٠٢٥</span>
+            <span class="special-date">أجمل البدايات</span>
+        </div>
+    </div>
+    
+    <!-- قسم الذكرى الخاصة -->
+    <div class="memory-section">
+        <h2 class="memory-title">ذكرى خاصة</h2>
+        <div class="memory-date">
+            <i class="fas fa-calendar heart-icon"></i>
+            ٦ يونيو ٢٠٢٥
+        </div>
+        <div class="memory-content">
+            في هذا اليوم الجميل، بدأت رحلتنا معًا، كل يوم معك هو هدية من السماء
+            <span class="heart-icon">❤️</span>
+        </div>
     </div>
     
     <!-- قسم الاقتباس الرومانسي -->
@@ -490,7 +690,7 @@
     </div>
     
     <footer>
-        تم إنشاء هذا الموقع بكل الحب ❤️ - تحديث يومي لرسائل الحب
+        تم إنشاء هذا الموقع بكل الحب ❤️ - ذكرى أجمل البدايات في ٦ يونيو ٢٠٢٥
     </footer>
 
     <script>
@@ -498,7 +698,7 @@
         const messagesContainer = document.getElementById('messagesContainer');
         const newMessageInput = document.getElementById('newMessage');
         const addMessageBtn = document.getElementById('addMessageBtn');
-        const currentDateEl = document.getElementById('currentDate');
+        const loveCounter = document.getElementById('loveCounter');
         const dailyQuoteEl = document.getElementById('dailyQuote');
         
         // مجموعة من الاقتباسات الرومانسية
@@ -514,15 +714,12 @@
             "أنتِ الحب الذي كنت أحلم به طوال حياتي",
             "حتى النجوم تغار من بريق عينيكِ",
             "كل لحظة بعيداً عنك هي لحظة ضائعة من حياتي",
-            "حبنا هو القصة الأجمل التي سأرويها للأجيال القادمة"
+            "حبنا هو القصة الأجمل التي سأرويها للأجيال القادمة",
+            "حبك هو الوردة التي لا تذبل في حديقة قلبي",
+            "أنتِ شمس حياتي التي تشرق كل صباح بابتسامة",
+            "معك فقط أشعر أنني في بيتي الحقيقي",
+            "حبي لك ينمو كل يوم مثل الزهرة الجميلة"
         ];
-        
-        // تحديث التاريخ الحالي
-        function updateCurrentDate() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            currentDateEl.textContent = now.toLocaleDateString('ar-EG', options);
-        }
         
         // تحديث الاقتباس اليومي
         function updateDailyQuote() {
@@ -577,6 +774,12 @@
             return date.toLocaleDateString('ar-EG', options);
         }
         
+        // تحديث عداد الرسائل
+        function updateLoveCounter() {
+            const messages = JSON.parse(localStorage.getItem('loveMessages')) || [];
+            loveCounter.textContent = messages.length;
+        }
+        
         // عرض الرسائل
         function displayMessages() {
             // مسح المحتوى الحالي
@@ -584,6 +787,9 @@
             
             // الحصول على الرسائل من localStorage
             const messages = JSON.parse(localStorage.getItem('loveMessages')) || [];
+            
+            // تحديث العداد
+            updateLoveCounter();
             
             // عرض الرسائل بترتيب زمني عكسي (الأحدث أولاً)
             messages.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -744,7 +950,6 @@
         
         // تهيئة الموقع
         function init() {
-            updateCurrentDate();
             updateDailyQuote();
             createStars();
             createPetals();
@@ -778,7 +983,11 @@
                     "أنتِ أجمل ما في حياتي",
                     "حبي لكِ لا ينتهي",
                     "كل يوم أحبكِ أكثر",
-                    "أنتِ كل أحلامي"
+                    "أنتِ كل أحلامي",
+                    "الحب الحقيقي هو أنتِ",
+                    "أنتِ نعمة حياتي",
+                    "معكِ فقط أشعر بالكمال",
+                    "أنتِ كل ما أتمناه"
                 ];
                 
                 const randomMessage = bubbleMessages[Math.floor(Math.random() * bubbleMessages.length)];
