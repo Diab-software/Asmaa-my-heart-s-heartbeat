@@ -27,6 +27,68 @@
             cursor: default;
         }
         
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 1.5s ease;
+        }
+        
+        .splash-content {
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(255, 105, 180, 0.5);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .splash-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #ffccd5;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+        }
+        
+        .splash-subtitle {
+            font-size: 1.5rem;
+            color: #d0b0ff;
+            margin-bottom: 30px;
+        }
+        
+        .enter-button {
+            background: linear-gradient(45deg, #ff69b4, #d056c5);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+            animation: pulse 2s infinite;
+        }
+        
+        .enter-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 40px rgba(255, 105, 180, 1);
+        }
+        
         .header {
             text-align: center;
             padding: 20px;
@@ -56,58 +118,59 @@
         
         h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             color: #ffccd5;
-            text-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            text-shadow: 0 0 25px rgba(255, 105, 180, 0.9);
             margin-bottom: 0.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
+            animation: float 3s infinite ease-in-out;
         }
         
         .heart-container {
             position: relative;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            animation: heartbeat 1.2s infinite;
         }
         
         .heart {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: #ff69b4;
             transform: rotate(45deg);
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
-            animation: heartbeat 1.2s infinite;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 1);
         }
         
         .heart::before,
         .heart::after {
             content: "";
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: #ff69b4;
             border-radius: 50%;
         }
         
         .heart::before {
-            top: -25px;
+            top: -30px;
             left: 0;
         }
         
         .heart::after {
             top: 0;
-            left: -25px;
+            left: -30px;
         }
         
         .date-display {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: #d0b0ff;
             margin-top: 10px;
             display: flex;
@@ -118,10 +181,12 @@
         
         .special-date {
             background: linear-gradient(45deg, #ff69b4, #d056c5);
-            padding: 5px 15px;
-            border-radius: 20px;
+            padding: 8px 20px;
+            border-radius: 30px;
             font-weight: bold;
+            font-size: 1.3rem;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
         }
         
         /* الرسائل اليومية */
@@ -133,15 +198,15 @@
         
         .message-card {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
             animation: slideIn 0.6s ease-out;
-            transition: transform 0.3s ease;
-            border: 1px solid rgba(255, 182, 193, 0.2);
+            transition: all 0.5s ease;
+            border: 1px solid rgba(255, 182, 193, 0.3);
         }
         
         .message-card::before {
@@ -153,12 +218,13 @@
             height: 5px;
             background: linear-gradient(90deg, #ff69b4, #d056c5);
             transform: translateY(-100%);
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
         
         .message-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px) rotate(1deg);
             background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.5);
         }
         
         .message-card:hover::before {
@@ -173,23 +239,23 @@
         }
         
         .message-date {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: #ffb0d9;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
         
         .message-actions {
             display: flex;
-            gap: 10px;
+            gap: 15px;
         }
         
         .edit-btn, .delete-btn {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             border: none;
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             color: white;
             cursor: pointer;
@@ -197,32 +263,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 1.1rem;
         }
         
         .edit-btn:hover {
-            background: rgba(0, 200, 255, 0.3);
+            background: rgba(0, 200, 255, 0.4);
+            transform: scale(1.1);
         }
         
         .delete-btn:hover {
-            background: rgba(255, 80, 80, 0.3);
+            background: rgba(255, 80, 80, 0.4);
+            transform: scale(1.1);
         }
         
         .message-content {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             line-height: 1.8;
             font-style: italic;
             position: relative;
-            padding-left: 20px;
+            padding: 20px 0 0 30px;
             white-space: pre-wrap;
         }
         
         .message-content::before {
             content: """;
             position: absolute;
-            top: -15px;
+            top: -20px;
             right: 0;
-            font-size: 5rem;
-            color: rgba(255, 105, 180, 0.2);
+            font-size: 6rem;
+            color: rgba(255, 105, 180, 0.3);
             font-family: 'Playfair Display', serif;
         }
         
@@ -230,34 +299,34 @@
             display: none;
             flex-direction: column;
             gap: 15px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         
         .edit-textarea {
             width: 100%;
-            height: 120px;
+            height: 150px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 182, 193, 0.3);
-            border-radius: 15px;
-            padding: 15px;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            border-radius: 20px;
+            padding: 20px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-family: 'Cairo', sans-serif;
             resize: vertical;
         }
         
         .edit-buttons {
             display: flex;
-            gap: 10px;
+            gap: 15px;
             justify-content: flex-end;
         }
         
         .save-btn, .cancel-btn {
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 10px 25px;
+            border-radius: 25px;
             border: none;
             font-family: 'Cairo', sans-serif;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -265,11 +334,20 @@
         .save-btn {
             background: linear-gradient(45deg, #4CAF50, #2E7D32);
             color: white;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .save-btn:hover {
+            transform: scale(1.05);
         }
         
         .cancel-btn {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
             color: white;
+        }
+        
+        .cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
         }
         
         .add-message-container {
@@ -277,11 +355,11 @@
             max-width: 800px;
             background: rgba(10, 5, 20, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 20px;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
-            border: 1px solid rgba(255, 182, 193, 0.2);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 30px;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+            border: 1px solid rgba(255, 182, 193, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -293,46 +371,46 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.1), transparent 70%);
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.2), transparent 70%);
             z-index: -1;
         }
         
         textarea {
             width: 100%;
-            height: 150px;
+            height: 180px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 182, 193, 0.3);
-            border-radius: 15px;
-            padding: 15px;
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            border-radius: 20px;
+            padding: 20px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-family: 'Cairo', sans-serif;
             resize: vertical;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            transition: all 0.5s ease;
         }
         
         textarea:focus {
             outline: none;
             border-color: #ff69b4;
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.5);
         }
         
         button {
             background: linear-gradient(45deg, #ff69b4, #d056c5);
             border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
+            padding: 18px 35px;
+            border-radius: 60px;
             color: white;
             font-family: 'Cairo', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            gap: 15px;
+            box-shadow: 0 10px 25px rgba(255, 105, 180, 0.6);
             position: relative;
             overflow: hidden;
         }
@@ -344,13 +422,13 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.8s;
         }
         
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.8);
         }
         
         button:hover::before {
@@ -366,11 +444,11 @@
             position: fixed;
             top: 5%;
             left: 10%;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: radial-gradient(circle at 30% 30%, #f9f3e9, #d8d0c5);
             border-radius: 50%;
-            box-shadow: 0 0 40px rgba(249, 243, 233, 0.7);
+            box-shadow: 0 0 50px rgba(249, 243, 233, 0.8);
             z-index: -1;
             animation: driftMoon 90s ease-in-out infinite;
         }
@@ -414,10 +492,10 @@
         .bubble {
             position: absolute;
             color: #ff69b4;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: bold;
             pointer-events: none;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
             animation: bubbleRise 3s forwards;
             z-index: 1000;
             font-family: 'Dancing Script', cursive;
@@ -427,36 +505,37 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 18px;
+            border-radius: 25px;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-            border: 1px solid rgba(255, 182, 193, 0.2);
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+            border: 1px solid rgba(255, 182, 193, 0.3);
         }
         
         .music-player {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 20px;
-            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 18px;
+            border-radius: 25px;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
-            border: 1px solid rgba(255, 182, 193, 0.2);
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+            border: 1px solid rgba(255, 182, 193, 0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
         }
         
         .music-player:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
         }
         
         /* الرسوم المتحركة */
@@ -473,27 +552,27 @@
         @keyframes heartbeat {
             0% { 
                 transform: rotate(45deg) scale(1); 
-                box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
             }
             50% { 
                 transform: rotate(45deg) scale(1.1); 
-                box-shadow: 0 0 30px rgba(255, 105, 180, 1);
+                box-shadow: 0 0 40px rgba(255, 105, 180, 1);
             }
             100% { 
                 transform: rotate(45deg) scale(1); 
-                box-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
             }
         }
         
         @keyframes driftMoon {
             0%, 100% { transform: translate(0, 0); }
-            25% { transform: translate(10px, 15px); }
-            50% { transform: translate(0, 30px); }
-            75% { transform: translate(-10px, 15px); }
+            25% { transform: translate(20px, 25px); }
+            50% { transform: translate(0, 50px); }
+            75% { transform: translate(-20px, 25px); }
         }
         
         @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(0.5); }
+            0%, 100% { opacity: 0.3; transform: scale(0.7); }
             50% { opacity: 1; transform: scale(1); }
         }
         
@@ -503,27 +582,27 @@
         
         @keyframes bubbleRise {
             0% {
-                transform: translate(-50%, 0) scale(0.5);
-                opacity: 0.8;
+                transform: translate(-50%, 0) scale(0.6);
+                opacity: 0.9;
             }
             70% {
-                opacity: 0.7;
+                opacity: 0.8;
             }
             100% {
-                transform: translate(-50%, -100px) scale(1.2);
+                transform: translate(-50%, -120px) scale(1.3);
                 opacity: 0;
             }
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 105, 180, 0.7); }
+            50% { transform: scale(1.07); box-shadow: 0 0 40px rgba(255, 105, 180, 1); }
+            100% { transform: scale(1); box-shadow: 0 0 20px rgba(255, 105, 180, 0.7); }
         }
         
         @keyframes float {
             0% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
             100% { transform: translateY(0) rotate(0); }
         }
         
@@ -534,36 +613,39 @@
         }
         
         footer {
-            margin-top: 30px;
+            margin-top: 40px;
             text-align: center;
-            padding: 20px;
+            padding: 25px;
             color: #a0a0d0;
-            font-size: 1rem;
+            font-size: 1.1rem;
             width: 100%;
             max-width: 800px;
-            background: rgba(10, 5, 20, 0.3);
-            border-radius: 15px;
+            background: rgba(10, 5, 20, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
         }
         
         @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .message-content { font-size: 1.1rem; }
-            textarea { height: 120px; font-size: 1rem; }
-            button { padding: 12px 25px; font-size: 1rem; }
-            .love-count, .music-player { top: 10px; font-size: 0.9rem; }
+            h1 { font-size: 2.5rem; }
+            .splash-title { font-size: 3rem; }
+            .message-content { font-size: 1.3rem; }
+            textarea { height: 150px; font-size: 1.2rem; }
+            button { padding: 15px 30px; font-size: 1.2rem; }
+            .love-count, .music-player { top: 15px; font-size: 1rem; }
         }
         
         .quote-section {
             width: 100%;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
             text-align: center;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 182, 193, 0.2);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
         }
         
         .quote-section::before {
@@ -573,49 +655,51 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.1), transparent 70%);
+            background: radial-gradient(circle at center, rgba(255, 105, 180, 0.15), transparent 70%);
             z-index: -1;
         }
         
         .quote-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
+            font-size: 2.8rem;
             color: #ffccd5;
-            margin-bottom: 20px;
-            text-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px rgba(255, 105, 180, 0.7);
+            animation: float 4s infinite;
         }
         
         .quote-content {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             line-height: 1.8;
             font-style: italic;
             color: #d0b0ff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             position: relative;
+            animation: fadeIn 2s ease;
         }
         
         .quote-content::before, .quote-content::after {
             content: """;
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            color: rgba(255, 105, 180, 0.3);
+            font-size: 5rem;
+            color: rgba(255, 105, 180, 0.4);
             position: absolute;
             line-height: 1;
         }
         
         .quote-content::before {
-            top: -20px;
+            top: -30px;
             right: 0;
         }
         
         .quote-content::after {
-            bottom: -40px;
+            bottom: -50px;
             left: 0;
             transform: rotate(180deg);
         }
         
         .quote-author {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: #ffb0d9;
             font-family: 'Playfair Display', serif;
         }
@@ -623,65 +707,73 @@
         .memory-section {
             width: 100%;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 30px 0;
             text-align: center;
-            border: 1px solid rgba(255, 182, 193, 0.2);
-            position: relative;
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+            animation: slideIn 1s ease;
         }
         
         .memory-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: #ffccd5;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
         }
         
         .memory-date {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #ff69b4;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         
         .memory-content {
-            font-size: 1.3rem;
+            font-size: 1.6rem;
             line-height: 1.8;
             color: #d0b0ff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .heart-icon {
             color: #ff69b4;
-            font-size: 1.5rem;
-            margin: 0 5px;
+            font-size: 1.8rem;
+            margin: 0 8px;
             animation: heartbeat 1.5s infinite;
         }
         
         .gift-box {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            width: 60px;
-            height: 60px;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(45deg, #ff69b4, #d056c5);
-            border-radius: 10px;
+            border-radius: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
-            animation: float 3s infinite;
+            box-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+            animation: float 4s infinite;
             z-index: 100;
+            transition: all 0.5s ease;
+        }
+        
+        .gift-box:hover {
+            transform: scale(1.1) rotate(10deg);
+            box-shadow: 0 0 35px rgba(255, 105, 180, 1);
         }
         
         .gift-box i {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: white;
         }
         
@@ -691,14 +783,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.5s ease;
+            transition: all 0.8s ease;
         }
         
         .gift-modal.active {
@@ -708,74 +800,163 @@
         
         .gift-content {
             background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 30px;
+            padding: 40px;
             text-align: center;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
-            border: 1px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+            border: 1px solid rgba(255, 182, 193, 0.5);
             position: relative;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .gift-modal.active .gift-content {
+            transform: scale(1);
         }
         
         .gift-close {
             position: absolute;
-            top: 15px;
-            left: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            width: 30px;
-            height: 30px;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gift-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: rotate(90deg);
         }
         
         .gift-title {
             font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
+            font-size: 3.5rem;
             color: #ffccd5;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
         }
         
         .gift-message {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             line-height: 1.8;
             color: #d0b0ff;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         
         .gift-image {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 20px;
-            border-radius: 10px;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 30px;
+            border-radius: 15px;
             overflow: hidden;
             background: linear-gradient(45deg, #ff69b4, #d056c5);
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.6);
         }
         
         .gift-image i {
-            font-size: 5rem;
+            font-size: 7rem;
             color: white;
             animation: pulse 2s infinite;
         }
         
         .sparkle {
             position: absolute;
-            width: 10px;
-            height: 10px;
+            width: 15px;
+            height: 15px;
             background: #fff;
             border-radius: 50%;
-            animation: sparkle 1s forwards;
+            animation: sparkle 1.5s forwards;
             pointer-events: none;
+            box-shadow: 0 0 15px white;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            background: #ff69b4;
+            pointer-events: none;
+            z-index: 1000;
+            animation: confettiFall 5s linear forwards;
+        }
+        
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        .love-letter {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 400px;
+            max-width: 90%;
+            background: #fff9f0;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 50px rgba(255, 105, 180, 0.8);
+            z-index: 1001;
+            transition: all 0.8s ease;
+            color: #5a3e36;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            line-height: 1.8;
+            text-align: center;
+            display: none;
+        }
+        
+        .love-letter.active {
+            transform: translate(-50%, -50%) scale(1);
+            display: block;
+        }
+        
+        .letter-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #d056c5;
+        }
+        
+        .letter-content {
+            margin-bottom: 30px;
+        }
+        
+        .letter-signature {
+            font-style: italic;
+            color: #ff69b4;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
+    <!-- شاشة البداية الساحرة -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <h1 class="splash-title">أسماء 🤍 محمد</h1>
+            <p class="splash-subtitle">رسائل حب يومية من القلب إلى القلب</p>
+            <button class="enter-button" id="enterButton">
+                <i class="fas fa-heart"></i> ادخل إلى عالم الحب
+            </button>
+        </div>
+    </div>
+    
     <!-- عناصر التزيين -->
     <div class="moon"></div>
     <div class="stars" id="stars"></div>
@@ -820,7 +1001,7 @@
             ٦ يونيو ٢٠٢٥
         </div>
         <div class="memory-content">
-            في هذا اليوم الجميل، بدأت رحلتنا معًا، كل يوم معك هو هدية من السماء
+            في هذا اليوم الجميل، بدأت أجمل قصة حب، كل يوم معك هو حلم يتحقق
             <span class="heart-icon">❤️</span>
         </div>
     </div>
@@ -839,7 +1020,7 @@
     
     <!-- نموذج إضافة رسالة جديدة -->
     <div class="add-message-container">
-        <h2 style="margin-bottom: 20px; color: #ffccd5; text-align: center;">أضف رسالة حب جديدة</h2>
+        <h2 style="margin-bottom: 25px; color: #ffccd5; text-align: center; font-size: 1.8rem;">أضف رسالة حب جديدة</h2>
         <textarea id="newMessage" placeholder="اكتب رسالة حبك اليومية هنا..."></textarea>
         <button id="addMessageBtn">
             <i class="fas fa-plus"></i> أضف رسالة جديدة
@@ -859,10 +1040,23 @@
             <p class="gift-message">
                 هذه الهدية هي رمز صغير لحبي الكبير لك. أتمنى أن تبتسمي كلما رأيتِها وتذكري كم أنتِ مميزة في حياتي. كل يوم معك هو هدية لا تقدر بثمن!
             </p>
-            <button onclick="createBubble('هديتك قادمة قريباً! ❤️', 'love')">
+            <button onclick="showLoveLetter()">
                 <i class="fas fa-heart"></i> استلم هديتك
             </button>
         </div>
+    </div>
+    
+    <!-- رسالة حب خاصة -->
+    <div class="love-letter" id="loveLetter">
+        <h2 class="letter-title">رسالة حب</h2>
+        <div class="letter-content">
+            حبيبتي أسماء،<br><br>
+            كلماتي تعجز عن وصف جمال روحك وطهر قلبك. أنتِ النور الذي يضيء حياتي، والوردة التي تفوح عطراً في أيامي. 
+            كل لحظة معك هي كنز لا يعوض، وكل نظرة من عينيكِ هي عالم من السعادة.<br><br>
+            أعدك بأن أحبك أكثر كل يوم، وأكون لكِ السند والحب والحماية. أنتِ كل أحلامي التي تحققت، وكل أمنياتي التي تمنيتها.<br><br>
+            إلى الأبد، حبك محمد.
+        </div>
+        <div class="letter-signature">محبك إلى الأبد، محمد</div>
     </div>
     
     <footer>
@@ -876,9 +1070,12 @@
     </audio>
     <audio id="giftSound" src="https://assets.mixkit.co/sfx/preview/mixkit-magic-sparkles-3006.mp3" preload="auto"></audio>
     <audio id="bubbleSound" src="https://assets.mixkit.co/sfx/preview/mixkit-cute-dimple-laugh-1337.mp3" preload="auto"></audio>
+    <audio id="confettiSound" src="https://assets.mixkit.co/sfx/preview/mixkit-happy-pop-2068.mp3" preload="auto"></audio>
 
     <script>
         // عناصر DOM
+        const splashScreen = document.getElementById('splashScreen');
+        const enterButton = document.getElementById('enterButton');
         const messagesContainer = document.getElementById('messagesContainer');
         const newMessageInput = document.getElementById('newMessage');
         const addMessageBtn = document.getElementById('addMessageBtn');
@@ -889,10 +1086,12 @@
         const heartSound = document.getElementById('heartSound');
         const giftSound = document.getElementById('giftSound');
         const bubbleSound = document.getElementById('bubbleSound');
+        const confettiSound = document.getElementById('confettiSound');
         const giftBox = document.getElementById('giftBox');
         const giftModal = document.getElementById('giftModal');
         const giftClose = document.getElementById('giftClose');
         const heartContainer = document.getElementById('heartContainer');
+        const loveLetter = document.getElementById('loveLetter');
         
         // مجموعة من الاقتباسات الرومانسية
         const romanticQuotes = [
@@ -911,7 +1110,9 @@
             "حبك هو الوردة التي لا تذبل في حديقة قلبي",
             "أنتِ شمس حياتي التي تشرق كل صباح بابتسامة",
             "معك فقط أشعر أنني في بيتي الحقيقي",
-            "حبي لك ينمو كل يوم مثل الزهرة الجميلة"
+            "حبي لك ينمو كل يوم مثل الزهرة الجميلة",
+            "أنتِ أغلى من كل كنوز الدنيا",
+            "حبك هو أجمل شعور عرفته في حياتي"
         ];
         
         // تحديث الاقتباس اليومي
@@ -923,14 +1124,14 @@
         // إنشاء النجوم
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            const starCount = 150;
+            const starCount = 200;
             
             for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.classList.add('star');
                 star.style.left = `${Math.random() * 100}vw`;
                 star.style.top = `${Math.random() * 100}vh`;
-                star.style.width = `${Math.random() * 3}px`;
+                star.style.width = `${Math.random() * 4}px`;
                 star.style.height = star.style.width;
                 star.style.setProperty('--duration', `${2 + Math.random() * 3}s`);
                 star.style.setProperty('--delay', `${Math.random() * 5}s`);
@@ -941,7 +1142,7 @@
         // إنشاء بتلات الزهور
         function createPetals() {
             const petalsContainer = document.getElementById('petals');
-            const petalCount = 60;
+            const petalCount = 80;
             const petalTypes = [
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ff6699" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z"/></svg>',
                 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><path fill="%23ffcc00" d="M5 0C6.38 1.67 9 4 5 10C1 4 3.62 1.67 5 0Z" transform="rotate(45 5 5)"/></svg>',
@@ -954,8 +1155,8 @@
                 const randomPetal = petalTypes[Math.floor(Math.random() * petalTypes.length)];
                 petal.style.backgroundImage = `url('${randomPetal}')`;
                 petal.style.left = `${Math.random() * 100}vw`;
-                petal.style.animationDuration = `${5 + Math.random() * 15}s`;
-                petal.style.width = `${10 + Math.random() * 20}px`;
+                petal.style.animationDuration = `${5 + Math.random() * 20}s`;
+                petal.style.width = `${15 + Math.random() * 25}px`;
                 petal.style.height = petal.style.width;
                 petalsContainer.appendChild(petal);
             }
@@ -1157,7 +1358,49 @@
             // إزالة الشرر بعد انتهاء الرسوم المتحركة
             setTimeout(() => {
                 sparkle.remove();
-            }, 1000);
+            }, 1500);
+        }
+        
+        // إنشاء كونفيتي
+        function createConfetti() {
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // ألوان عشوائية
+                const colors = ['#ff69b4', '#ffcc00', '#4CAF50', '#2196F3', '#9C27B0'];
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // حجم عشوائي
+                const size = 5 + Math.random() * 15;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size}px`;
+                
+                // وضع عشوائي
+                confetti.style.left = `${Math.random() * window.innerWidth}px`;
+                confetti.style.top = `-${Math.random() * 100}px`;
+                
+                // مدة عشوائية
+                confetti.style.animationDuration = `${2 + Math.random() * 3}s`;
+                
+                document.body.appendChild(confetti);
+                
+                // إزالة الكونفيتي بعد انتهاء الرسوم المتحركة
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+            
+            // تشغيل صوت الكونفيتي
+            confettiSound.currentTime = 0;
+            confettiSound.play();
+        }
+        
+        // عرض رسالة الحب
+        function showLoveLetter() {
+            giftModal.classList.remove('active');
+            loveLetter.classList.add('active');
+            createConfetti();
         }
         
         // تهيئة الموقع
@@ -1222,9 +1465,11 @@
                 if (music.paused) {
                     music.play();
                     musicPlayer.innerHTML = '<i class="fas fa-music"></i> إيقاف الموسيقى';
+                    musicPlayer.style.background = 'rgba(255, 105, 180, 0.3)';
                 } else {
                     music.pause();
                     musicPlayer.innerHTML = '<i class="fas fa-music"></i> تشغيل الموسيقى';
+                    musicPlayer.style.background = 'rgba(255, 255, 255, 0.15)';
                 }
             });
             
@@ -1244,11 +1489,23 @@
                 heartSound.play();
                 
                 // إنشاء قلوب صغيرة تنفجر
-                for (let i = 0; i < 15; i++) {
+                for (let i = 0; i < 20; i++) {
                     setTimeout(() => {
                         createFloatingHeart();
                     }, i * 100);
                 }
+            });
+            
+            // زر الدخول
+            enterButton.addEventListener('click', () => {
+                splashScreen.style.opacity = '0';
+                setTimeout(() => {
+                    splashScreen.style.display = 'none';
+                    createConfetti();
+                    music.play();
+                    musicPlayer.innerHTML = '<i class="fas fa-music"></i> إيقاف الموسيقى';
+                    musicPlayer.style.background = 'rgba(255, 105, 180, 0.3)';
+                }, 1500);
             });
         }
         
@@ -1256,7 +1513,7 @@
         function createFloatingHeart() {
             const heart = document.createElement('div');
             heart.style.position = 'fixed';
-            heart.style.fontSize = '24px';
+            heart.style.fontSize = '30px';
             heart.style.color = '#ff69b4';
             heart.style.zIndex = '1000';
             heart.style.pointerEvents = 'none';
@@ -1274,12 +1531,12 @@
             
             // حركة عشوائية
             const angle = Math.random() * Math.PI * 2;
-            const distance = 100 + Math.random() * 100;
+            const distance = 150 + Math.random() * 150;
             const targetX = x + Math.cos(angle) * distance;
             const targetY = y + Math.sin(angle) * distance;
             
             // رسوم متحركة
-            const duration = 1000 + Math.random() * 1000;
+            const duration = 1500 + Math.random() * 1500;
             const start = Date.now();
             
             function animate() {
